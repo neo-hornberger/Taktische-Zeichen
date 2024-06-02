@@ -1,0 +1,18 @@
+{% extends "templates/base.j2t" %}
+
+{% block symbol %}
+	{% set c=namespace() %}
+	{{ set_colors(c, theme) }}
+
+	<path d="M10,64 L10,192 L246,192 L246,64 L128,16 Z" fill="{{ c.stroke }}" stroke="none" />
+	<path d="M11,65 L11,191 L245,191 L245,65 L128,17 Z" fill="{{ c.secondary }}" stroke="none" />
+	<rect x="15" y="69" width="226" height="118" fill="{{ c.primary }}" stroke="none" />
+	<path d="M22,65 L234,65 L128,22 Z" fill="{{ c.primary }}" stroke="none" />
+
+	{% if name is defined %}
+		<text x="128" y="145" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: 48px">{{ name }}</text>
+	{% endif %}
+	{% if organisation is defined %}
+		<text x="236" y="180" fill="{{ c.secondary }}" style="text-anchor: end">{{ organisation }}</text>
+	{% endif %}
+{% endblock %}

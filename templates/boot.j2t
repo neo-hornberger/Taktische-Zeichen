@@ -1,0 +1,20 @@
+{% extends "templates/fahrzeug.j2t" %}
+
+{% block symbol %}
+	{% set c=namespace() %}
+	{{ set_colors(c, theme) }}
+	
+	<path d="M10,64 L246,64 A118,118 180 0 1 10,64 Z" fill="{{ c.stroke }}" stroke="none" />
+	<path d="M11,65 L245,65 A116,115 180 0 1 11,65 Z" fill="{{ c.secondary }}" stroke="none" />
+	<path d="M16,70 L240,70 A106,100 180 0 1 16,70 Z" fill="{{ c.primary }}" stroke="none" />
+
+	{% if name is defined %}
+		<text x="128" y="127" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: 48px">{{ name }}</text>
+	{% endif %}
+	{% if organisation is defined %}
+		<text x="236" y="180" fill="{{ c.outer_text }}" style="text-anchor: end">{{ organisation }}</text>
+	{% endif %}
+	{% if type is defined %}
+		<text x="20" y="180" fill="{{ c.outer_text }}" style="text-anchor: start">{{ type }}</text>
+	{% endif %}
+{% endblock %}

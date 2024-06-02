@@ -1,0 +1,66 @@
+{% extends "templates/base.j2t" %}
+
+{% block symbol %}
+	{% set c=namespace() %}
+	{{ set_colors(c, theme) }}
+
+	<rect x="10" y="64" width="236" height="128" stroke="{{ c.stroke }}" fill="none" stroke-width="5" />
+	<line x1="10" y1="193" x2="10" y2="225" stroke="{{ c.stroke }}" stroke-width="5" />
+	<rect x="10" y="64" width="236" height="128" fill="{{ c.primary }}" stroke="{{ c.secondary }}" stroke-width="3" />
+	<line x1="10" y1="193" x2="10" y2="224" stroke="{{ c.secondary }}" stroke-width="3" />
+
+	{% if unit_size is defined %}
+		{% if unit_size == 'Trupp' %}
+			<ellipse cx="128" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+		{% elif unit_size == 'Staffel' %}
+			<ellipse cx="128" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="128" cy="24" rx="10" ry="10" fill="{{ c.stroke }}" />
+		{% elif unit_size == 'Gruppe' %}
+			<ellipse cx="88"  cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="168" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			{#
+			<ellipse cx="64"  cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="196" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			#}
+		{% elif unit_size == 'Zugtrupp' %}
+			<ellipse cx="128" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="64"  cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />
+			<ellipse cx="128" cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />
+			<ellipse cx="192" cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />
+		{% elif unit_size == 'Zug' %}
+			<ellipse cx="64"  cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="128" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="192" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+		{% elif unit_size == 'Verband' or unit_size == 'Verband 1' or unit_size == 'Bereitschaft' %}
+			<line x1="128" y1="64" x2="128" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+		{% elif unit_size == 'Verband 2' or unit_size == 'Abteilung' %}
+			<line x1="120" y1="64" x2="120" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+			<line x1="136" y1="64" x2="136" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+		{% elif unit_size == 'Verband 3' or unit_size == 'Großverband' %}
+			<line x1="112" y1="64" x2="112" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+			<line x1="128" y1="64" x2="128" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+			<line x1="144" y1="64" x2="144" y2="28" stroke="{{ c.stroke }}" stroke-width="10" />
+		{% else %}
+			{{ abort('unit_size not set correctly!') }}
+		{% endif %}
+	{% endif %}
+
+	{% if name is defined %}
+		{% set __name_dy=0 %}
+		{% set __name_ds=0 %}
+		{% if name|length >= 12 %}
+			{{ abort('Name too long: ' ~ name) }}
+		{% elif name|length >= 8 %}
+			{% set __name_dy=-6 %}
+			{% set __name_ds=-12 %}
+		{% elif name|length >= 6 %}
+			{% set __name_dy=-4 %}
+			{% set __name_ds=-8 %}
+		{% endif %}
+
+		<text x="128" y="{{ 150 + __name_dy }}" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: {{ 56 + __name_ds }}px">{{ name }}</text>
+	{% endif %}
+	{% if organisation is defined %}
+		<text x="236" y="182" fill="{{ c.secondary }}" style="text-anchor: end">{{ organisation }}</text>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% set theme=thw %}
+
+{% set color_outtext='#000000' %}
+
+{% set thin_extras=true %}
+
+{% set organisation='THW' %}

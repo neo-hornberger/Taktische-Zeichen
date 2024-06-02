@@ -1,0 +1,5 @@
+{% set theme=polizei %}
+
+{% set thin_extras=true %}
+
+{% set organisation='BPol' %}

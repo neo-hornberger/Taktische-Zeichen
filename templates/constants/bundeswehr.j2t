@@ -1,0 +1,5 @@
+{% set theme=bundeswehr %}
+
+{% set thin_extras=true %}
+
+{% set organisation='Bw' %}

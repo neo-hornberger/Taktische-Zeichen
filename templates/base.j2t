@@ -1,19 +1,59 @@
+{% macro abort(error) %}
+    {{ None['[ERROR] ' ~ error][0] }}
+{% endmacro %}
+
+{% macro set_colors(c, t) %}
+	{% if c is undefined %}
+		{{ abort("set_colors: c is undefined") }}
+	{% endif %}
+	{% if t is undefined %}
+		{% set t={} %}
+	{% endif %}
+
+	{% if t.colorPrimary is defined %}
+		{% set c.primary=t.colorPrimary %}
+	{% else %}
+		{% set c.primary="#FFFFFF" %}
+	{% endif %}
+
+	{% if t.colorSecondary is defined %}
+		{% set c.secondary=t.colorSecondary %}
+	{% else %}
+		{% set c.secondary="#000000" %}
+	{% endif %}
+
+	{% if t.colorStroke is defined %}
+		{% set c.stroke=t.colorStroke %}
+	{% else %}
+		{% set c.stroke="#000000" %}
+	{% endif %}
+
+	{% set c.outer_text=c.stroke %}
+{% endmacro %}
+
+
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewbox="0 0 256 256">
-	<title>{% block title%}Feuerwehrgerätehaus{% endblock title %}</title>
-	{% set fonts%}
-	<defs>
-		<style type="text/css">
-		{% include './fonts/fonts.j2' %}
-		</style>
-	</defs>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+	{% if title is defined %}
+		<title>{{ title }}</title>
+	{% endif %}
+
+	{% set fonts %}
+		<defs>
+			<style type="text/css">
+			{% include './fonts/fonts.j2' %}
+			</style>
+		</defs>
 	{% endset %}
+
 	{% set body %}
 	{% block symbol %}
-	{% endblock symbol %}
+	{% endblock %}
 	{% endset %}
+
 	{% if '<text' in body  %}
 		{{ fonts }}
-	{% endif %} 
+	{% endif %}
+
 	{{ body }}
 </svg>

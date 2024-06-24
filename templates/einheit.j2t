@@ -39,7 +39,7 @@
 			<ellipse cx="196" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			#}
 		{% elif unit_size == 'Zugtrupp' %}
-			<ellipse cx="128" cy="48" rx="10" ry="10" fill="{{ c.stroke }}" />
+			<ellipse cx="128" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="64"  cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />
 			<ellipse cx="128" cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />
 			<ellipse cx="192" cy="86" rx="10" ry="10" fill="{{ c.secondary }}" />

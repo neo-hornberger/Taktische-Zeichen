@@ -13,11 +13,11 @@
 	{% elif is_leading is defined and is_leading %}
 		{% set __text_dy=5 %}
 		
-		<path d="M74 96 l108 0 a56,44 0 0 0 -108,0" fill="{{ c.stroke }}" stroke="none" />
+		<path d="M74 96 l108 0 a56,44 0 0 0 -108,0" fill="{{ c.secondary }}" stroke="none" />
 	{% elif is_logistics is defined and is_logistics %}
 		{% set __text_dy=-5 %}
 
-		<path d="M74 160 l108 0 a56,-44 0 0 1 -108,0" fill="{{ c.stroke }}" stroke="none" />
+		<path d="M74 160 l108 0 a56,-44 0 0 1 -108,0" fill="{{ c.secondary }}" stroke="none" />
 	{% endif %}
 
 	{% if is_stationary is defined and is_stationary %}

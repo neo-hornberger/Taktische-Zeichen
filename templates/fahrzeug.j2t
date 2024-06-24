@@ -22,6 +22,11 @@
 			<path d="M3,63 L3,199 L247,199" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="40"  cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="216" cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
+		{% elif vehicle_type == 'Wechselladerfahrzeug, geländegängig' or vehicle_type == 'Wechselladerfahrzeug, geländefähig' or vehicle_type == 'Wechselladerfahrzeug, gl' or vehicle_type == 'WLF, gl' %}
+			<path d="M3,63 L3,199 L247,199" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
+			<ellipse cx="40"  cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
+			<ellipse cx="128" cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
+			<ellipse cx="216" cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 		{% elif vehicle_type == 'Abrollbehälter' or vehicle_type == 'AB' or vehicle_type == 'Container' %}
 			<ellipse cx="9" cy="80" rx="6" ry="6" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}"/>
 			{#

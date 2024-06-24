@@ -43,7 +43,12 @@ stickers: $(STICKERS)
 
 build/png/1024/%.png: build/svg/%.svg
 	mkdir -p $(@D)
-	inkscape -w 1024 -h 1024 $^ -o $@
+	unshare --user inkscape -w 1024 -h 1024 $^ -o $@ > /dev/null
+	optipng $@
+	
+build/print/png/1024/%.png: build/print/svg/%.svg
+	mkdir -p $(@D)
+	unshare --user inkscape -w 1024 -h 1024 $^ -o $@ > /dev/null
 	optipng $@
 
 build/print/png/1024/%.png: build/print/svg/%.svg
@@ -53,7 +58,13 @@ build/print/png/1024/%.png: build/print/svg/%.svg
 
 build/png/512/%.png: build/svg/%.svg
 	mkdir -p $(@D)
-	inkscape -w 512 -h 512 $^ -o $@
+	unshare --user inkscape -w 512 -h 512 $^ -o $@ > /dev/null
+	optipng $@
+
+	
+build/print/png/512/%.png: build/print/svg/%.svg
+	mkdir -p $(@D)
+	unshare --user inkscape -w 512 -h 512 $^ -o $@ > /dev/null
 	optipng $@
 
 build/print/png/512/%.png: build/print/svg/%.svg
@@ -63,8 +74,14 @@ build/print/png/512/%.png: build/print/svg/%.svg
 
 build/png/256/%.png: build/svg/%.svg
 	mkdir -p $(@D)
-	inkscape -w 256 -h 256 $^ -o $@
+	unshare --user inkscape -w 256 -h 256 $^ -o $@ > /dev/null
 	optipng $@
+	
+build/print/png/256/%.png: build/print/svg/%.svg
+	mkdir -p $(@D)
+	unshare --user inkscape -w 256 -h 256 $^ -o $@ > /dev/null
+	optipng $@
+
 
 build/print/png/256/%.png: build/print/svg/%.svg
 	mkdir -p $(@D)

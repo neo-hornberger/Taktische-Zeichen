@@ -68,7 +68,7 @@
 		<text x="192" y="192" fill="{{ c.outer_text }}" style="text-anchor: end">{{ organisation }}</text>
 	{% endif %}
 	{% if type is defined %}
-		<text x="0" y="192" fill="{{ c.outer_text }}" style="text-anchor: start">{{ type }}</text>
+		<text x="64" y="192" fill="{{ c.outer_text }}" style="text-anchor: start">{{ type }}</text>
 	{% endif %}
 
 	{% if subtext is defined %}

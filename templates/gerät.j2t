@@ -1,0 +1,36 @@
+{% extends "templates/base.j2t" %}
+
+{% block symbol %}
+	{% set c=namespace() %}
+	{{ set_colors(c, theme) }}
+
+	<rect x="64" y="64" width="128" height="128" stroke="none" fill="{{ c.secondary }}" />
+	<rect x="69" y="69" width="118" height="118" stroke="none" fill="{{ c.primary }}" />
+	<rect x="64" y="64" width="128" height="128" stroke="{{ c.stroke }}" fill="none" stroke-width="1" />
+
+	{% if name is defined %}
+		{% set __name_dy=0 %}
+		{% set __name_ds=0 %}
+		{% if name|length >= 6 %}
+			{{ abort('Name too long: ' ~ name) }}
+		{% elif name|length >= 5 %}
+			{% set __name_dy=-6 %}
+			{% set __name_ds=-18 %}
+		{% elif name|length >= 3 %}
+			{% set __name_dy=-2 %}
+			{% set __name_ds=-4 %}
+		{% endif %}
+
+		<text x="128" y="{{ 147 + __name_dy }}" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: {{ 52 + __name_ds }}px">{{ name }}</text>
+	{% endif %}
+	{% if organisation is defined %}
+		<text x="184" y="182" fill="{{ c.secondary }}" style="text-anchor: end; font-size: 14px">{{ organisation }}</text>
+	{% endif %}
+	{% if type is defined %}
+		<text x="72" y="182" fill="{{ c.secondary }}" style="text-anchor: start; font-size: 14px">{{ type }}</text>
+	{% endif %}
+
+	{% if subtext is defined %}
+		<text x="128" y="224" fill="{{ c.outer_text }}" style="text-anchor: middle; font-size: 32px">{{ subtext }}</text>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "templates/base.j2t" %}
+
+{% block symbol %}
+	<path d="M60 160 H196 l50 -32 l-50 -32 H60 l-50 32 l50 32 z" fill="#FFFFFF" stroke="#000000" stroke-width="5" />
+
+	{% if medium is defined %}
+		<text style="font-size: 24px; text-anchor: middle" fill="#000000" x="83" y="137">{{ medium }}</text>
+	{% endif %}
+
+	{% if medium_type is defined %}
+		{% if medium_type == 'Bild' %}
+		{% elif medium_type == 'Bild, Funk' or medium_type == 'Bildfunk' %}
+		{% elif medium_type == 'Daten' %}
+			<path d="M60,107 h16 v8 h14 v-8 h16" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Daten, Funk' or medium_type == 'Datenfunk' %}
+			<path d="M60,103 h16 v8 h14 v-8 h16" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M62.5,110 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Daten, Fernsprech' or medium_type == 'Datenfernsprech' %}
+			<path d="M60,103 h16 v8 h14 v-8 h16" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M60,115 h46" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Sprechfunk, digital' %}
+		{% elif medium_type == 'Fernschreiben' %}
+			<path d="M60,108 h46" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M60,114 h46" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Fernschreiben, Funk' or medium_type == 'Fernschreibfunk' %}
+			<path d="M60,103 h46" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M60,107 h46" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M62.5,110 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Fernsprechen' %}
+			<path d="M60,111 h46" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Fernsprechen, Funk' or medium_type == 'Fernsprechfunk' or medium_type == 'Sprechfunk' %}
+			<path d="M60,105 h46" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M62.5,110 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Festbild' %}
+		{% elif medium_type == 'Festbild, Funk' or medium_type == 'Festbildfunk' %}
+		{% elif medium_type == 'Relais, Funk' or medium_type == 'Relaisfunk' %}
+		{% elif medium_type == 'Tasten' %}
+			<path d="M83,108 h23" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M60,114 h46" stroke="#000000" stroke-width="3" fill="none" />
+		{% elif medium_type == 'Tasten, Funk' %}
+			<path d="M83,103 h23" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M60,107 h46" stroke="#000000" stroke-width="3" fill="none" />
+			<path d="M62.5,110 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5 l5,5 l5,-5" stroke="#000000" stroke-width="3" fill="none" />
+		{% else %}
+			{{ abort('medium_type not set correctly!') }}
+		{% endif %}
+	{% endif %}
+{% endblock %}

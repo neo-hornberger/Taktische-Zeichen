@@ -4,3 +4,9 @@
 {% set title='Drehleiter mit Korb' %}
 {% set name='DLK' %}
 {% set vehicle_type='Kfz' %}
+
+{% block symbol %}
+	{{ super() }}
+
+	<path d="M10,64 L10,192 L246,192 L246,64 Q128,100 10,64 Z" fill="none" stroke-width="1" stroke="#000000" />
+{% endblock %}

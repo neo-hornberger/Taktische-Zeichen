@@ -1,0 +1,13 @@
+{% extends "templates/einheit.j2t" %}
+{% from "templates/constants/kats.j2t" import theme with context %}
+
+{% set title='ABC Bereitschaft' %}
+{% set unit_size='Verband 1' %}
+
+{% block symbol %}
+	{{ super() }}
+
+	<path d="M88 92 L188 164 M168 92 L68 164" stroke="{{ theme.colorSecondary }}" stroke-width="10" fill="none" />
+	<ellipse cx="78" cy="102" rx="20" ry="20" fill="{{ theme.colorSecondary }}" />
+	<ellipse cx="178" cy="102" rx="20" ry="20" fill="{{ theme.colorSecondary }}" />
+{% endblock %}

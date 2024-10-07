@@ -1,1 +1,1 @@
-{% set theme=fuehrung %}
+{% set scheme=fuehrung %}

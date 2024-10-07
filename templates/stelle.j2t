@@ -2,7 +2,7 @@
 
 {% block symbol %}
 	{% set c=namespace() %}
-	{{ set_colors(c, theme) }}
+	{{ set_colors(c, scheme) }}
 
 	<circle cx="128" cy="128" r="64" fill="none" stroke="{{ c.stroke }}" stroke-width="5" />
 	<circle cx="128" cy="128" r="64" fill="{{ c.primary }}" stroke="{{ c.secondary }}" stroke-width="3" />

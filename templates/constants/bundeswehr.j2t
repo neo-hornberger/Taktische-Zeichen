@@ -1,4 +1,4 @@
-{% set theme=bundeswehr %}
+{% set scheme=bundeswehr %}
 
 {% set thin_extras=true %}
 

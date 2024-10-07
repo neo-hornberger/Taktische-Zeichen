@@ -2,28 +2,28 @@
     {{ None['[ERROR] ' ~ error][0] }}
 {% endmacro %}
 
-{% macro set_colors(c, t) %}
+{% macro set_colors(c, s) %}
 	{% if c is undefined %}
 		{{ abort("set_colors: c is undefined") }}
 	{% endif %}
-	{% if t is undefined %}
-		{% set t={} %}
+	{% if s is undefined %}
+		{% set s={} %}
 	{% endif %}
 
-	{% if t.colorPrimary is defined %}
-		{% set c.primary=t.colorPrimary %}
+	{% if s.colorPrimary is defined %}
+		{% set c.primary=s.colorPrimary %}
 	{% else %}
 		{% set c.primary="#FFFFFF" %}
 	{% endif %}
 
-	{% if t.colorSecondary is defined %}
-		{% set c.secondary=t.colorSecondary %}
+	{% if s.colorSecondary is defined %}
+		{% set c.secondary=s.colorSecondary %}
 	{% else %}
 		{% set c.secondary="#000000" %}
 	{% endif %}
 
-	{% if t.colorStroke is defined %}
-		{% set c.stroke=t.colorStroke %}
+	{% if s.colorStroke is defined %}
+		{% set c.stroke=s.colorStroke %}
 	{% else %}
 		{% set c.stroke="#000000" %}
 	{% endif %}

@@ -1,5 +1,5 @@
 {% extends "templates/einheit.j2t" %}
-{% from "templates/constants/kats.j2t" import theme with context %}
+{% from "templates/constants/kats.j2t" import scheme with context %}
 
 {% set title='ABC Messtrupp' %}
 {% set unit_size='Trupp' %}
@@ -7,8 +7,8 @@
 {% block symbol %}
 	{{ super() }}
 
-	<path d="M10,192 l236,-128" stroke-width="5" stroke="{{ theme.colorSecondary }}" fill="none" />
-	<path d="M88 92 L188 164 M168 92 L68 164" stroke="{{ theme.colorSecondary }}" stroke-width="10" fill="none" />
-	<ellipse cx="78" cy="102" rx="20" ry="20" fill="{{ theme.colorSecondary }}" />
-	<ellipse cx="178" cy="102" rx="20" ry="20" fill="{{ theme.colorSecondary }}" />
+	<path d="M10,192 l236,-128" stroke-width="5" stroke="{{ scheme.colorSecondary }}" fill="none" />
+	<path d="M88 92 L188 164 M168 92 L68 164" stroke="{{ scheme.colorSecondary }}" stroke-width="10" fill="none" />
+	<ellipse cx="78" cy="102" rx="20" ry="20" fill="{{ scheme.colorSecondary }}" />
+	<ellipse cx="178" cy="102" rx="20" ry="20" fill="{{ scheme.colorSecondary }}" />
 {% endblock %}

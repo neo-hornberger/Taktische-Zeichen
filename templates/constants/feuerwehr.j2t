@@ -1,4 +1,4 @@
-{% set theme=feuerwehr %}
+{% set scheme=feuerwehr %}
 
 {% set thin_extras=true %}
 

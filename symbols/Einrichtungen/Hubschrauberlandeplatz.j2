@@ -1,12 +1,12 @@
 {% extends "templates/stelle.j2t" %}
-{% from "templates/constants/führung.j2t" import theme with context %}
+{% from "templates/constants/führung.j2t" import scheme with context %}
 
 {% set title='Hubschrauberlandeplatz' %}
 
 {% block symbol %}
 	{{ super() }}
 
-	<path d="M110,162 l36,0 M128,162 l0,-54" stroke="{{ theme.colorStroke }}" fill="none" stroke-width="5" />
-	<path d="M128,108 a5,5 90 0 1 5,-5 l32,0 a5,5 180 0 1 0,10 l-32,0 a5,5 90 0 1 -5,-5 Z" stroke="{{ theme.colorStroke }}" fill="none" stroke-width="5" />
-	<path d="M128,108 a5,5 90 0 0 -5,-5 l-32,0 a5,5 180 0 0 0,10 l32,0 a5,5 90 0 0 5,-5 Z" stroke="{{ theme.colorStroke }}" fill="none" stroke-width="5" />
+	<path d="M110,162 l36,0 M128,162 l0,-54" stroke="{{ scheme.colorStroke }}" fill="none" stroke-width="5" />
+	<path d="M128,108 a5,5 90 0 1 5,-5 l32,0 a5,5 180 0 1 0,10 l-32,0 a5,5 90 0 1 -5,-5 Z" stroke="{{ scheme.colorStroke }}" fill="none" stroke-width="5" />
+	<path d="M128,108 a5,5 90 0 0 -5,-5 l-32,0 a5,5 180 0 0 0,10 l32,0 a5,5 90 0 0 5,-5 Z" stroke="{{ scheme.colorStroke }}" fill="none" stroke-width="5" />
 {% endblock %}

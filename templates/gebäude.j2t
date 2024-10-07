@@ -2,7 +2,7 @@
 
 {% block symbol %}
 	{% set c=namespace() %}
-	{{ set_colors(c, theme) }}
+	{{ set_colors(c, scheme) }}
 
 	<path d="M10,64 L10,192 L246,192 L246,64 L128,16 Z" fill="{{ c.stroke }}" stroke="none" />
 	<path d="M11,65 L11,191 L245,191 L245,65 L128,17 Z" fill="{{ c.secondary }}" stroke="none" />

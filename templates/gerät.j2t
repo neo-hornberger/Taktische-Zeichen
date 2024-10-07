@@ -2,7 +2,7 @@
 
 {% block symbol %}
 	{% set c=namespace() %}
-	{{ set_colors(c, theme) }}
+	{{ set_colors(c, scheme) }}
 
 	<rect x="64" y="64" width="128" height="128" stroke="none" fill="{{ c.secondary }}" />
 	<rect x="69" y="69" width="118" height="118" stroke="none" fill="{{ c.primary }}" />

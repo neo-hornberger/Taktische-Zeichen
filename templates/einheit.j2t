@@ -1,12 +1,8 @@
 {% extends "templates/base.j2t" %}
 
-{% if theme is undefined %}
-	{{ abort('theme is undefined!') }}
-{% endif %}
-
 {% block symbol %}
 	{% set c=namespace() %}
-	{{ set_colors(c, theme) }}
+	{{ set_colors(c, scheme) }}
 
 	{% set __base_dy=0 %}
 	{% set __base_dh=0 %}

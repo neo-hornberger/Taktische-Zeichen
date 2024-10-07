@@ -1,11 +1,11 @@
 {% extends "templates/stelle.j2t" %}
-{% from "templates/constants/führung.j2t" import theme with context %}
+{% from "templates/constants/führung.j2t" import scheme with context %}
 
 {% set title='Bereitstellungsraum mit Meldekopf' %}
 
 {% block symbol %}
 	{{ super() }}
 
-	<path d="M85,105 L85,151 L171,151 L171,105 Q128,128 85,105 Z" stroke="{{ theme.colorSecondary }}" fill="none" stroke-width="5" />
+	<path d="M85,105 L85,151 L171,151 L171,105 Q128,128 85,105 Z" stroke="{{ scheme.colorSecondary }}" fill="none" stroke-width="5" />
 	<text style="text-anchor: middle; font-size: 40px" x="128" y="105">M</text>
 {% endblock %}

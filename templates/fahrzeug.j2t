@@ -8,7 +8,7 @@
 
 {% block symbol %}
 	{% set c=namespace() %}
-	{{ set_colors(c, theme) }}
+	{{ set_colors(c, scheme) }}
 	
 	{% if vehicle_type is defined %}
 		{% if vehicle_type == 'Kraftfahrzeug' or vehicle_type == 'Kfz' %}

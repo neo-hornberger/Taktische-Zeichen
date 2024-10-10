@@ -1,5 +1,2 @@
 {% set scheme=polizei %}
-
-{% set thin_extras=true %}
-
 {% set organisation='Pol' %}

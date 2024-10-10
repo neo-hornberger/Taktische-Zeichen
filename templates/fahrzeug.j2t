@@ -1,14 +1,14 @@
 {% extends "templates/base.j2t" %}
 
-{% if thin_extras is defined and thin_extras %}
-	{% set __extras_w=2 %}
-{% else %}
-	{% set __extras_w=5 %}
-{% endif %}
-
 {% block symbol %}
 	{% set c=namespace() %}
 	{{ set_colors(c, scheme) }}
+
+	{% if c.thin_extras %}
+		{% set __extras_w=2 %}
+	{% else %}
+		{% set __extras_w=5 %}
+	{% endif %}
 	
 	{% if vehicle_type is defined %}
 		{% if vehicle_type == 'Kraftfahrzeug' or vehicle_type == 'Kfz' %}

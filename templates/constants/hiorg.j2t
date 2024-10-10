@@ -1,2 +1,0 @@
-{% set base_color='#FFFFFF' %}
-{% set outline_color='#000000' %}

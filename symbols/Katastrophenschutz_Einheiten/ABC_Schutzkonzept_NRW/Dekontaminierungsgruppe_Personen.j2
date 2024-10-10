@@ -1,9 +1,9 @@
-{% extends "templates/fahrzeug.j2t" %}
+{% extends "templates/einheit.j2t" %}
 {% from "templates/constants/kats.j2t" import scheme with context %}
 
-{% set title='Abrollbehälter Dekontamination Verletzte' %}
-{% set type='Dekon-P' %}
-{% set vehicle_type='Kfz, gl' %}
+{% set title='Dekontaminierungsgruppe Personen' %}
+{% set unit_size='Gruppe' %}
+{% set type='P' %}
 
 {% block symbol %}
 	{{ super() }}
@@ -13,4 +13,5 @@
 	<path d="M148,157 L158,157 L158,147 Z" fill="{{ scheme.colorSecondary }}" />
 	<ellipse cx="104" cy="110" rx="10" ry="10" fill="{{ scheme.colorSecondary }}" />
 	<ellipse cx="152" cy="110" rx="10" ry="10" fill="{{ scheme.colorSecondary }}" />
+	<ellipse cx="128" cy="128" rx="45" ry="45" fill="none" stroke="{{ scheme.colorSecondary }}" stroke-width="2" />
 {% endblock %}

@@ -1,5 +1,2 @@
 {% set scheme=feuerwehr %}
-
-{% set thin_extras=true %}
-
 {% set organisation='Fw' %}

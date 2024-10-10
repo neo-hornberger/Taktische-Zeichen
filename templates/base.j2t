@@ -29,6 +29,7 @@
 	{% endif %}
 
 	{% set c.outer_text=c.stroke %}
+	{% set c.thin_extras=(c.secondary != c.stroke) %}
 {% endmacro %}
 
 

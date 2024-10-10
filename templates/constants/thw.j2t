@@ -1,5 +1,2 @@
 {% set scheme=thw %}
-
-{% set thin_extras=true %}
-
 {% set organisation='THW' %}

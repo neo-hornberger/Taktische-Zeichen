@@ -26,7 +26,8 @@ def generate(files: [str]) -> str:
 	metadata = dict()
 
 	for file in files:
-		metadata[file] = _metadata_entry(file)
+		p = file.split('/')
+		metadata[f"{'/'.join(p[3:-1])}/{p[-1][:-4]}"] = _metadata_entry(file)
 	
 	return json.dumps(metadata, ensure_ascii=False).encode('utf8').decode()
 

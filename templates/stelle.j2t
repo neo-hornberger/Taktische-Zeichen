@@ -1,9 +1,8 @@
 {% extends "templates/base.j2t" %}
 
-{% block symbol %}
-	{% set c=namespace() %}
-	{{ set_colors(c, scheme) }}
+{% set keywords=['Stelle','Kreis']+(keywords if keywords is defined else []) %}
 
+{% block symbol %}
 	<circle cx="128" cy="128" r="64" fill="none" stroke="{{ c.stroke }}" stroke-width="5" />
 	<circle cx="128" cy="128" r="64" fill="{{ c.primary }}" stroke="{{ c.secondary }}" stroke-width="3" />
 
@@ -11,20 +10,25 @@
 	{% if (is_leading is defined and is_leading) and (is_logistics is defined and is_logistics) %}
 		{{ abort('is_leading and is_logistics are mutually exclusive!') }}
 	{% elif is_leading is defined and is_leading %}
+		{% set _ = keywords.append('Führung') %}
 		{% set __text_dy=5 %}
 		
 		<path d="M74 96 l108 0 a56,44 0 0 0 -108,0" fill="{{ c.secondary }}" stroke="none" />
 	{% elif is_logistics is defined and is_logistics %}
+		{% set _ = keywords.append('Logistik') %}
 		{% set __text_dy=-5 %}
 
 		<path d="M74 160 l108 0 a56,-44 0 0 1 -108,0" fill="{{ c.secondary }}" stroke="none" />
 	{% endif %}
 
 	{% if is_stationary is defined and is_stationary %}
+		{% set _ = keywords.extend(['stationär','Dach']) %}
 		<path d="M10 80 L128 48 L246 80" stroke="{{ c.stroke }}" fill="none" stroke-width="5" />
 	{% endif %}
 
 	{% if name is defined %}
+		{% set _ = keywords.append(name) %}
+
 		{% set __name_dy=0 %}
 		{% set __name_ds=0 %}
 		{% if name|length >= 12 %}
@@ -46,10 +50,12 @@
 		<text x="128" y="{{ 147 + __name_dy + __text_dy }}" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: {{ 56 + __name_ds }}px">{{ name }}</text>
 	{% endif %}
 	{% if organisation is defined %}
+		{% set _ = keywords.append(organisation) %}
 		<text x="236" y="196" fill="{{ c.outer_text }}" style="text-anchor: end; font-size: 24px">{{ organisation }}</text>
 	{% endif %}
 
 	{% if subtext is defined %}
+		{% set _ = keywords.append(subtext) %}
 		<text x="128" y="220" fill="{{ c.outer_text }}" style="text-anchor: middle; font-size: 32px">{{ subtext }}</text>
 	{% endif %}
 {% endblock %}

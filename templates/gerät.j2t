@@ -1,14 +1,15 @@
 {% extends "templates/base.j2t" %}
 
-{% block symbol %}
-	{% set c=namespace() %}
-	{{ set_colors(c, scheme) }}
+{% set keywords=['Gerät','Quadrat','Viereck']+(keywords if keywords is defined else []) %}
 
+{% block symbol %}
 	<rect x="64" y="64" width="128" height="128" stroke="none" fill="{{ c.secondary }}" />
 	<rect x="69" y="69" width="118" height="118" stroke="none" fill="{{ c.primary }}" />
 	<rect x="64" y="64" width="128" height="128" stroke="{{ c.stroke }}" fill="none" stroke-width="1" />
 
 	{% if name is defined %}
+		{% set _ = keywords.append(name) %}
+
 		{% set __name_dy=0 %}
 		{% set __name_ds=0 %}
 		{% if name|length >= 6 %}
@@ -24,13 +25,16 @@
 		<text x="128" y="{{ 147 + __name_dy }}" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: {{ 52 + __name_ds }}px">{{ name }}</text>
 	{% endif %}
 	{% if organisation is defined %}
+		{% set _ = keywords.append(organisation) %}
 		<text x="184" y="182" fill="{{ c.secondary }}" style="text-anchor: end; font-size: 14px">{{ organisation }}</text>
 	{% endif %}
 	{% if type is defined %}
+		{% set _ = keywords.append(type) %}
 		<text x="72" y="182" fill="{{ c.secondary }}" style="text-anchor: start; font-size: 14px">{{ type }}</text>
 	{% endif %}
 
 	{% if subtext is defined %}
+		{% set _ = keywords.append(subtext) %}
 		<text x="128" y="224" fill="{{ c.outer_text }}" style="text-anchor: middle; font-size: 32px">{{ subtext }}</text>
 	{% endif %}
 {% endblock %}

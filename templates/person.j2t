@@ -1,43 +1,53 @@
 {% extends "templates/base.j2t" %}
+{% import "templates/constants/keywords.j2t" as kw %}
+
+{% set keywords=['Person','Raute','Diamant','Karo','Viereck']+(keywords if keywords is defined else []) %}
 
 {% block symbol %}
-	{% set c=namespace() %}
-	{{ set_colors(c, scheme) }}
-
 	<path d="M64,128 L128,64 L192,128 L128,192 Z" fill="{{ c.stroke }}" />
 	<path d="M69,128 L128,69 L187,128 L128,187 Z" stroke="{{ c.secondary }}" fill="{{ c.primary }}" stroke-width="5" />
 	{% if (is_leader is defined and is_leader) and (is_specialist is defined and is_specialist) %}
 		{{ abort('is_leader and is_specialist are mutually exclusive!') }}
 	{% elif is_leader is defined and is_leader %}
+		{% set _ = keywords.extend(['Führung','Hut']) %}
 		<path d="M128,69 L147,88 L109,88 Z" fill="{{ c.secondary }}" stroke-width="0" />
 	{% elif is_specialist is defined and is_specialist %}
+		{% set _ = keywords.extend(['Spezialist','Fachberater']) %}
 		<path d="M147,88 L108,88" stroke="{{ c.secondary }}" stroke-width="5" />
 	{% endif %}
 
 	{% if unit_size is defined %}
 		{% if unit_size == 'Trupp' %}
+			{% set _ = keywords.extend(kw.trupp) %}
 			<ellipse cx="128" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 		{% elif unit_size == 'Staffel' %}
+			{% set _ = keywords.extend(kw.staffel) %}
 			<ellipse cx="128" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="128" cy="20" rx="10" ry="10" fill="{{ c.stroke }}" />
 		{% elif unit_size == 'Gruppe' %}
+			{% set _ = keywords.extend(kw.gruppe) %}
 			<ellipse cx="100" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="156" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 		{% elif unit_size == 'Zugtrupp' %}
+			{% set _ = keywords.extend(kw.zugtrupp) %}
 			<ellipse cx="128" cy="44"  rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="114" cy="100" rx="5"  ry="5"  fill="{{ c.secondary }}" />
 			<ellipse cx="128" cy="100" rx="5"  ry="5"  fill="{{ c.secondary }}" />
 			<ellipse cx="142" cy="100" rx="5"  ry="5"  fill="{{ c.secondary }}" />
 		{% elif unit_size == 'Zug' %}
+			{% set _ = keywords.extend(kw.zug) %}
 			<ellipse cx="100" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="128" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 			<ellipse cx="156" cy="44" rx="10" ry="10" fill="{{ c.stroke }}" />
 		{% elif unit_size == 'Verband' or unit_size == 'Verband 1' or unit_size == 'Bereitschaft' %}
+			{% set _ = keywords.extend(kw.verband1) %}
 			<line x1="128" y1="55" x2="128" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
 		{% elif unit_size == 'Verband 2' or unit_size == 'Abteilung' %}
+			{% set _ = keywords.extend(kw.verband2) %}
 			<line x1="124" y1="55" x2="124" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
 			<line x1="132" y1="55" x2="132" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
 		{% elif unit_size == 'Verband 3' or unit_size == 'Großverband' %}
+			{% set _ = keywords.extend(kw.verband3) %}
 			<line x1="120" y1="55" x2="120" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
 			<line x1="128" y1="55" x2="128" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
 			<line x1="136" y1="55" x2="136" y2="28" stroke="{{ c.stroke }}" stroke-width="5" />
@@ -47,6 +57,8 @@
 	{% endif %}
 
 	{% if name is defined %}
+		{% set _ = keywords.append(name) %}
+
 		{% set __name_dy=0 %}
 		{% set __name_ds=0 %}
 		{% if name|length >= 9 %}
@@ -65,13 +77,16 @@
 		<text x="128" y="{{ 145 + __name_dy }}" fill="{{ c.secondary }}" style="text-anchor: middle; font-size: {{ 48 + __name_ds }}px">{{ name }}</text>
 	{% endif %}
 	{% if organisation is defined %}
+		{% set _ = keywords.append(organisation) %}
 		<text x="192" y="192" fill="{{ c.outer_text }}" style="text-anchor: end">{{ organisation }}</text>
 	{% endif %}
 	{% if type is defined %}
+		{% set _ = keywords.append(type) %}
 		<text x="64" y="192" fill="{{ c.outer_text }}" style="text-anchor: start">{{ type }}</text>
 	{% endif %}
 
 	{% if subtext is defined %}
+		{% set _ = keywords.append(subtext) %}
 		<text x="128" y="228" fill="{{ c.outer_text }}" style="text-anchor: middle; font-size: 32px">{{ subtext }}</text>
 	{% endif %}
 {% endblock %}

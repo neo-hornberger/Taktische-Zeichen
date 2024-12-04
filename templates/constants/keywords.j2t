@@ -1,0 +1,8 @@
+{% set trupp=['Trupp','ein Punkt'] %}
+{% set staffel=['Staffel','zwei Punkte'] %}
+{% set gruppe=['Gruppe','zwei Punkte'] %}
+{% set zugtrupp=['Zugtrupp','vier Punkte'] %}
+{% set zug=['Zug','drei Punkte'] %}
+{% set verband1=['Verband','Bereitschaft','ein Balken','ein Strich'] %}
+{% set verband2=['Verband','Abteilung','zwei Balken','zwei Striche'] %}
+{% set verband3=['Verband','Großverband','drei Balken','drei Striche'] %}

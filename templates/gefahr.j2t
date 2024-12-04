@@ -1,13 +1,18 @@
 {% extends "templates/base.j2t" %}
 
-{% block symbol %}
-	{% if color is undefined %}
-		{% set color='#FF0000' %}
-	{% endif %}
+{% set keywords=['Gefahr','Dreieck']+(keywords if keywords is defined else []) %}
 
-	<path d="M50,64 L128,192 L206,64 Z" stroke-width="5" stroke="{{ color }}" fill="none" />
+{% if color is undefined %}
+	{% set color='#FF0000' %}
+{% endif %}
+{% set scheme={'colorPrimary':color} %}
+
+{% block symbol %}
+	<path d="M50,64 L128,192 L206,64 Z" stroke-width="5" stroke="{{ c.primary }}" fill="none" />
 
 	{% if name is defined %}
+		{% set _ = keywords.append(name) %}
+
 		{% set __name_dy=0 %}
 		{% set __name_ds=0 %}
 		{% if name|length >= 5 %}
@@ -17,14 +22,16 @@
 			{% set __name_ds=-16 %}
 		{% endif %}
 
-		<text x="128" y="{{ 120 + __name_dy }}" fill="{{ color }}" style="text-anchor: middle; font-size: {{ 56 + __name_ds }}px">{{ name }}</text>
+		<text x="128" y="{{ 120 + __name_dy }}" fill="{{ c.primary }}" style="text-anchor: middle; font-size: {{ 56 + __name_ds }}px">{{ name }}</text>
 	{% endif %}
 
 	{% if (is_acute is defined and is_acute) and (is_presumed is defined and is_presumed) %}
 		{{ abort('is_acute and is_presumed are mutually exclusive!') }}
 	{% elif is_acute is defined and is_acute %}
-		<text x="64" y="180" fill="{{ color }}" style="text-anchor: middle; font-size: 56px">!</text>
+		{% set _ = keywords.append('akut') %}
+		<text x="64" y="180" fill="{{ c.primary }}" style="text-anchor: middle; font-size: 56px">!</text>
 	{% elif is_presumed is defined and is_presumed %}
-		<text x="64" y="180" fill="{{ color }}" style="text-anchor: middle; font-size: 56px">?</text>
+		{% set _ = keywords.append('vermutet') %}
+		<text x="64" y="180" fill="{{ c.primary }}" style="text-anchor: middle; font-size: 56px">?</text>
 	{% endif %}
 {% endblock %}

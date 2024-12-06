@@ -1,3 +1,7 @@
+{% set einheit=['Einheit','Rechteck','Viereck'] %}
+{% set fahrzeug=['Fahrzeug'] %}
+{% set fuehrungsstelle=['Führungsstelle','Fahne','Flagge'] %}
+
 {% set trupp=['Trupp','ein Punkt'] %}
 {% set staffel=['Staffel','zwei Punkte'] %}
 {% set gruppe=['Gruppe','zwei Punkte'] %}
@@ -6,3 +10,5 @@
 {% set verband1=['Verband','Bereitschaft','ein Balken','ein Strich'] %}
 {% set verband2=['Verband','Abteilung','zwei Balken','zwei Striche'] %}
 {% set verband3=['Verband','Großverband','drei Balken','drei Striche'] %}
+
+{% set rettungswesen=['Rettungswesen','Sanitätswesen','Gesundheitswesen','Kreuz'] %}

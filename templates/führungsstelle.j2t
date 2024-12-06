@@ -1,7 +1,7 @@
 {% extends "templates/base.j2t" %}
 {% import "templates/constants/keywords.j2t" as kw %}
 
-{% set keywords=['Führungsstelle','Fahne','Flagge']+(keywords if keywords is defined else []) %}
+{% set keywords=kw.fuehrungsstelle+(keywords if keywords is defined else []) %}
 
 {% block symbol %}
 	<rect x="10" y="64" width="236" height="128" stroke="{{ c.stroke }}" fill="none" stroke-width="5" />

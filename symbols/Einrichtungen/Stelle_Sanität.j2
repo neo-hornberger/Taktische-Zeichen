@@ -1,6 +1,8 @@
 {% extends "templates/stelle.j2t" %}
+{% import "templates/constants/keywords.j2t" as kw %}
 
 {% set title='Stelle Sanität' %}
+{% set keywords=kw.einheit+kw.rettungswesen %}
 
 {% block symbol %}
 	{{ super() }}

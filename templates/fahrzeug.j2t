@@ -1,13 +1,7 @@
 {% extends "templates/base.j2t" %}
+{% import "templates/constants/keywords.j2t" as kw %}
 
-{% set keywords=['Fahrzeug']+(keywords if keywords is defined else []) %}
-
-{% if name is defined %}
-	{% set keywords=keywords+[name] %}
-{% endif %}
-{% if organisation is defined %}
-	{% set keywords=keywords+[organisation] %}
-{% endif %}
+{% set keywords=kw.fahrzeug+(keywords if keywords is defined else []) %}
 
 {% block symbol %}
 	{% if c.thin_extras %}
@@ -18,21 +12,21 @@
 	
 	{% if vehicle_type is defined %}
 		{% if vehicle_type == 'Kraftfahrzeug' or vehicle_type == 'Kfz' %}
-			{% set _ = keywords.extend(['Kraftfahrzeug','Kfz']) %}
+			{% set _ = keywords.extend(['Kraftfahrzeug','Kfz','zwei Räder','zwei Kreise']) %}
 			<ellipse cx="40"  cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="216" cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 		{% elif vehicle_type == 'Kraftfahrzeug, geländegängig' or vehicle_type == 'Kraftfahrzeug, geländefähig' or vehicle_type == 'Kraftfahrzeug, gl' or vehicle_type == 'Kfz, gl' %}
-			{% set _ = keywords.extend(['Kraftfahrzeug','Kfz','geländegängig','geländefähig']) %}
+			{% set _ = keywords.extend(['Kraftfahrzeug','Kfz','geländegängig','geländefähig','drei Räder','drei Kreise']) %}
 			<ellipse cx="40"  cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="128" cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="216" cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 		{% elif vehicle_type == 'Wechselladerfahrzeug' or vehicle_type == 'WLF' %}
-			{% set _ = keywords.extend(['Wechselladerfahrzeug','WLF']) %}
+			{% set _ = keywords.extend(['Wechselladerfahrzeug','WLF','zwei Räder','zwei Kreise']) %}
 			<path d="M3,63 L3,199 L247,199" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="40"  cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="216" cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 		{% elif vehicle_type == 'Wechselladerfahrzeug, geländegängig' or vehicle_type == 'Wechselladerfahrzeug, geländefähig' or vehicle_type == 'Wechselladerfahrzeug, gl' or vehicle_type == 'WLF, gl' %}
-			{% set _ = keywords.extend(['Wechselladerfahrzeug','WLF','geländegängig','geländefähig']) %}
+			{% set _ = keywords.extend(['Wechselladerfahrzeug','WLF','geländegängig','geländefähig','drei Räder','drei Kreise']) %}
 			<path d="M3,63 L3,199 L247,199" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="40"  cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="128" cy="210" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
@@ -52,7 +46,7 @@
 			<rect x="1" y="121" width="10" height="14" fill="{{ c.secondary }}" />
 			#}
 		{% elif vehicle_type == 'Schienenfahrzeug' or vehicle_type == 'Schiene' %}
-			{% set _ = keywords.extend(['Schienenfahrzeug','Schiene']) %}
+			{% set _ = keywords.extend(['Schienenfahrzeug','Schiene','vier Räder','vier Kreise']) %}
 			<ellipse cx="40"  cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="64"  cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />
 			<ellipse cx="192" cy="205" rx="10" ry="10" stroke="{{ c.stroke }}" fill="none" stroke-width="{{ __extras_w }}" />

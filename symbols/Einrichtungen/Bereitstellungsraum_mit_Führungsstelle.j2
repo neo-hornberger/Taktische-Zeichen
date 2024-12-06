@@ -1,7 +1,9 @@
 {% extends "templates/stelle.j2t" %}
 {% from "templates/constants/führung.j2t" import scheme with context %}
+{% import "templates/constants/keywords.j2t" as kw %}
 
 {% set title='Bereitstellungsraum mit Führungsstelle' %}
+{% set keywords=kw.fahrzeug+kw.fuehrungsstelle %}
 
 {% block symbol %}
 	{{ super() }}

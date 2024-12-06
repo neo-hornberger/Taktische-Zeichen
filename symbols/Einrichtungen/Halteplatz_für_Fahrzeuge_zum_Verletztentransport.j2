@@ -1,6 +1,8 @@
 {% extends "templates/stelle.j2t" %}
+{% import "templates/constants/keywords.j2t" as kw %}
 
 {% set title='Halteplatz für Fahrzeuge zum Verletztentransport' %}
+{% set keywords=kw.rettungswesen+['Transport','Rad'] %}
 
 {% block symbol %}
 	{{ super() }}

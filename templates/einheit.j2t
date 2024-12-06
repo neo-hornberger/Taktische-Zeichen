@@ -1,7 +1,7 @@
 {% extends "templates/base.j2t" %}
 {% import "templates/constants/keywords.j2t" as kw %}
 
-{% set keywords=['Einheit','Rechteck','Viereck']+(keywords if keywords is defined else []) %}
+{% set keywords=kw.einheit+(keywords if keywords is defined else []) %}
 
 {% block symbol %}
 	{% set __base_dy=0 %}
